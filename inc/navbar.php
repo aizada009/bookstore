@@ -1,0 +1,85 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="images/book.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Главная <span class="sr-only">(current)</span></a>
+      </li>
+      <?php
+        if($loggedIn){
+      ?>
+      <li class="nav-item">
+        <a class="nav-link" href="mypage.php">Моя страница</a>
+      </li>
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Жанры
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="genre.php">Все</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Классика</a>
+          <a class="dropdown-item" href="#">Наука</a>
+          <a class="dropdown-item" href="#">Детективы</a>
+          <a class="dropdown-item" href="#">Разное</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <form action="index.php" method="POST">
+          <input type="hidden" name="logout">
+          <button class="btn btn-light" type="submit">Выйти
+            
+          </button>          
+        </form>
+        <!-- Button trigger modal -->
+        <?php } else { ?>
+          <button id="login-button" type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+            Войти
+          </button>
+
+          <?php }?>
+          
+
+          
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="card mt-4">
+                      <div class="card-body">
+                        <form action="login.php" method="POST">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email адрес</label>
+                          <input " name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email адрес">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Пароль</label>
+                          <input  name="password" type="password" class="form-control" id="password" placeholder="Пароль">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                      </form>
+                      <hr />
+                        <a href="registrate.php" class="card-link">Регистрация</a>
+                        <a href="#" class="card-link">Забыли пароль?</a>
+                      </div>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+    </form>
+  </div>
+</nav>
